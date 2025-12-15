@@ -44,14 +44,14 @@ session_id = "user_123" # Identifiant unique de l'utilisateur
 
 print("--- Échange 1 ---")
 response1 = chain_with_history.invoke(
-    {"question": "Bonjour ! Je m'appelle Alice."},
+    {"question": "Bonjour ! Je m'appelle Antoine."},
     config={"configurable": {"session_id": session_id}}
 )
-print(f"Toi: Bonjour ! Je m'appelle Alice.\nBot: {response1}\n")
+print(f"Toi: Bonjour ! Je m'appelle Antoine.\nBot: {response1}\n")
 
 print("--- Échange 2 ---")
 response2 = chain_with_history.invoke(
-    {"question": "Quel est mon nom ?"}, # Le bot doit se souvenir d'Alice
+    {"question": "Quel est mon nom ?"}, # Le bot doit se souvenir d'Antoine
     config={"configurable": {"session_id": session_id}}
 )
 print(f"Toi: Quel est mon nom ?\nBot: {response2}")
