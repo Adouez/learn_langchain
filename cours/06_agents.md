@@ -68,23 +68,31 @@ Jusqu'à ce qu'il ait assez d'infos pour donner la réponse finale.
 
 ## 💻 Structure du Code (`5_agents.py`)
 
+Depuis **LangChain 1.x**, les agents sont gérés par **LangGraph** (plus simple et plus puissant).
+
 ```python
-from langchain.agents import create_react_agent, AgentExecutor
-from langchain.tools import Tool
+from langgraph.prebuilt import create_react_agent
+from langchain_core.tools import tool
 
-# 1. Définir les outils
-tools = [
-    Tool(name="calculatrice", func=ma_fonction, description="...")
-]
+# 1. Définir les outils avec le décorateur @tool
+# La DOCSTRING devient automatiquement la description !
+@tool
+def calculatrice(expression: str) -> str:
+    """Utile pour faire des calculs mathématiques."""
+    return str(eval(expression))
 
-# 2. Créer l'agent (cerveau + outils)
-agent = create_react_agent(llm, tools, prompt)
+tools = [calculatrice]
 
-# 3. L'exécuteur gère la boucle ReAct
-executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
+# 2. Créer l'agent (cerveau + outils + prompt système)
+agent = create_react_agent(
+    llm, 
+    tools,
+    prompt="Tu es un assistant intelligent. Utilise les outils disponibles."
+)
 
-# 4. Lancer l'agent
-resultat = executor.invoke({"input": "Quelle est la racine carrée de 144 ?"})
+# 3. Lancer l'agent (LangGraph gère la boucle automatiquement)
+result = agent.invoke({"messages": [{"role": "user", "content": "Racine carrée de 144 ?"}]})
+reponse = result["messages"][-1].content
 ```
 
 ---
@@ -103,9 +111,9 @@ resultat = executor.invoke({"input": "Quelle est la racine carrée de 144 ?"})
 ## ⚠️ Points d'Attention
 
 1. **Coût** : Un agent fait plusieurs appels au LLM (réflexion à chaque étape) → plus cher.
-2. **Verbosité** : Activez `verbose=True` pour comprendre ce que fait l'agent.
-3. **Outils bien décrits** : La description des outils est CRUCIALE. C'est ce que le LLM lit pour décider quel outil utiliser !
-4. **Boucles infinies** : Limitez le nombre d'itérations (`max_iterations`).
+2. **LangGraph** : Depuis LangChain 1.x, utilisez `langgraph.prebuilt.create_react_agent` (plus l'ancien `AgentExecutor`).
+3. **Docstrings** : Avec le décorateur `@tool`, la **docstring** de la fonction devient automatiquement la description de l'outil. C'est ce que le LLM lit pour décider quel outil utiliser !
+4. **Debugging** : Ajoutez des `print()` dans vos outils pour tracer les appels.
 
 ---
 
@@ -114,8 +122,9 @@ resultat = executor.invoke({"input": "Quelle est la racine carrée de 144 ?"})
 - Un **Agent** = LLM + Outils + Boucle de raisonnement
 - Le LLM **décide** quel outil utiliser (contrairement à une chaîne fixe)
 - **ReAct** = Reason (réfléchir) + Act (agir) en boucle
-- La **description des outils** guide les décisions de l'agent
-- Utilisez `verbose=True` pour voir le raisonnement interne
+- **LangGraph** gère les agents depuis LangChain 1.x (remplace `AgentExecutor`)
+- Le décorateur `@tool` + la **docstring** = outil prêt à l'emploi
+- Le résultat est dans `result["messages"][-1].content`
 
 ---
 
