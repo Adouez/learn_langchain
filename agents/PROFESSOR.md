@@ -28,8 +28,3 @@ Mon objectif est de guider l'étudiant (User) de zéro à la maîtrise complète
 - **Framework** : LangChain (dernière version stable), LangChain Community, LangGraph (si nécessaire plus tard).
 - **Environnement** : Utilisation stricte de `.env` pour les clés API.
 - **Syntaxe** : Privilégier la syntaxe LCEL (`|`) pour les chaînes.
-
-## 🚀 Prochaines Étapes Prévues
-1. Consolider la leçon sur le RAG dans `cours/05_rag.md`.
-2. Aborder les **Agents** (quand le modèle décide lui-même quoi faire).
-3. Créer une interface utilisateur simple (Streamlit) pour rendre les projets interactifs.
