@@ -13,7 +13,7 @@ load_dotenv()
 # 1. Charger le document
 # On utilise un TextLoader simple ici. Pour des PDF, on utiliserait PyPDFLoader.
 print("📚 Chargement du règlement de Poudlard...")
-loader = TextLoader("DocARag/reglement_poudlard.txt", encoding="utf-8")
+loader = TextLoader("scripts/DocARag/reglement_poudlard.txt", encoding="utf-8")
 documents = loader.load()
 
 # 2. Découper le document (Chunking)
@@ -67,4 +67,3 @@ question2 = "A quelle heure est le couvre-feu pour les premières années ?"
 print(f"❓ Question : {question2}")
 reponse2 = rag_chain.invoke(question2)
 print(f"📜 Réponse officielle :\n{reponse2}")
-

@@ -31,4 +31,3 @@ reponse = chain.invoke({"question": "C'est quoi LangChain exactement ?"})
 
 print("\n💬 Réponse améliorée :")
 print(reponse)
-
