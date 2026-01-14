@@ -2,7 +2,7 @@
 
 Bienvenue dans ce dépôt d'apprentissage !
 
-Ce projet est le fruit d'une méthode d'apprentissage moderne : **le pair programming avec l'IA**.
+Ce projet est le fruit d'une méthode d'apprentissage moderne : **le VibeLearning**.
 Il documente mon parcours pour maîtriser **LangChain**, le framework de référence pour développer des applications basées sur les LLM, guidé étape par étape par l'assistant IA de l'éditeur **Cursor**.
 
 ## 💡 Le Concept : Apprendre via Cursor
