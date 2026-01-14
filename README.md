@@ -1,4 +1,4 @@
-# Apprendre LangChain avec Cursor 🦜🔗 + 🤖
+# Apprendre LangChain avec Cursor 🦜🔗 + 🤖 ad
 
 Bienvenue dans ce dépôt d'apprentissage !
 

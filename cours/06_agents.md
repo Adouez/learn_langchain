@@ -122,3 +122,5 @@ resultat = executor.invoke({"input": "Quelle est la racine carrée de 144 ?"})
 ## 🔜 Prochaine Étape
 
 Maintenant que tu comprends les Agents, on pourra créer une **interface Streamlit** pour interagir avec notre assistant de manière graphique ! 🚀
+
+
