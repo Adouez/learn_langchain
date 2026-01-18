@@ -109,6 +109,37 @@ Tour 2: "Quel est mon nom ?"
 
 ---
 
+## 🆕 Note : Évolution vers LangGraph (LangChain 1.x)
+
+Depuis **LangChain 1.x**, une nouvelle approche est disponible via **LangGraph** :
+
+| Approche | Outil | Cas d'usage |
+|----------|-------|-------------|
+| **Classique** | `RunnableWithMessageHistory` | Chaînes simples, facile à comprendre |
+| **Moderne** | LangGraph + `MemorySaver` | Agents, workflows complexes, plus de contrôle |
+
+### Avec LangGraph, la mémoire est gérée via un **état** :
+
+```python
+from langgraph.checkpoint.memory import MemorySaver
+from langgraph.prebuilt import create_react_agent
+
+# Le checkpointer sauvegarde l'état (dont les messages)
+memory = MemorySaver()
+
+agent = create_react_agent(llm, tools, checkpointer=memory)
+
+# Le thread_id remplace le session_id
+config = {"configurable": {"thread_id": "user_123"}}
+result = agent.invoke({"messages": [...]}, config=config)
+```
+
+> 💡 **Conseil** : Commence par `RunnableWithMessageHistory` pour comprendre le concept, puis passe à LangGraph quand tu travailles avec des Agents.
+
+📁 Voir le script `3bis_memory_langgraph.py` pour un exemple complet.
+
+---
+
 ## 🔜 Prochaine Leçon
 
 Notre bot a de la mémoire, mais il ne connaît que ce qu'il a appris pendant son entraînement. Comment lui faire lire VOS documents ? C'est le **RAG** !

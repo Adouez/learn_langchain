@@ -1,6 +1,21 @@
-langchain
-langchain-openai
-python-dotenv
-langchain-community
-faiss-cpu
-langchainhub
+# === LangChain Ecosystem ===
+langchain==1.2.3
+langchain-openai==1.1.2
+langchain-community==0.4.1
+langchain-core==1.2.7
+langchain-text-splitters==1.0.0
+langgraph==1.0.4
+
+# === Utilitaires ===
+python-dotenv==1.2.1
+langchainhub==0.1.21
+
+# === RAG & Vectorstores ===
+faiss-cpu==1.13.1
+pypdf==6.6.0
+
+# === Outils Agents ===
+ddgs==9.10.0
+
+# === Visualisation ===
+matplotlib==3.10.8

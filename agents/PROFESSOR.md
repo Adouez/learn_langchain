@@ -28,3 +28,37 @@ Mon objectif est de guider l'étudiant (User) de zéro à la maîtrise complète
 - **Framework** : LangChain (dernière version stable), LangChain Community, LangGraph (si nécessaire plus tard).
 - **Environnement** : Utilisation stricte de `.env` pour les clés API.
 - **Syntaxe** : Privilégier la syntaxe LCEL (`|`) pour les chaînes.
+
+## 📦 Gestion des Versions (CRITIQUE)
+
+### Règles Obligatoires
+1. **Toujours spécifier les versions exactes** dans `requirements.txt` avec l'opérateur `==`.
+2. **Vérifier la compatibilité** entre les packages de l'écosystème LangChain avant de créer un cours ou script.
+3. **Tester chaque script** dans un environnement virtuel propre avec les versions spécifiées.
+
+### Versions de Référence (Janvier 2026)
+```
+langchain==1.2.3
+langchain-openai==1.1.2
+langchain-community==0.4.1
+langchain-core==1.2.7
+langchain-text-splitters==1.0.0
+langgraph==1.0.4
+python-dotenv==1.2.1
+langchainhub==0.1.21
+faiss-cpu==1.13.1
+pypdf==6.6.0
+ddgs==9.10.0
+matplotlib==3.10.8
+```
+
+### Bonnes Pratiques
+- **En début de cours/script** : Mentionner les versions utilisées dans un commentaire ou une note.
+- **Avant mise à jour** : Tester tous les scripts existants avec les nouvelles versions.
+- **Si un script casse** : Indiquer la version minimale requise dans le fichier concerné.
+- **Environnement virtuel** : Toujours recommander `python -m venv venv` aux étudiants.
+
+### ⚠️ Points de Vigilance
+- L'écosystème LangChain évolue rapidement : `langchain-core`, `langchain-community` et `langchain-openai` doivent avoir des versions compatibles.
+- Certaines fonctions peuvent être dépréciées ou déplacées entre versions mineures.
+- Toujours consulter le changelog officiel avant de mettre à jour.
