@@ -19,3 +19,6 @@ ddgs==9.10.0
 
 # === Visualisation ===
 matplotlib==3.10.8
+
+# === Interface Web ===
+streamlit
